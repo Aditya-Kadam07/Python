@@ -27,13 +27,15 @@ def home():
     return render_template('MorE.html')
 
 
-# @app.route('/shortenurl')
-# def shortenurl():
-#     return render_template('shortenurl.html', Morse=request.args['Morse'])
+@app.route('/EnglishToMorse')
+def EnglishToMorse():
+    return render_template('EnglishToMorse.html')
+
 
 @app.route('/MorseToEnglish')
 def MorseToEnglish():
     return render_template('MorseToEnglish.html')
+
 
 @app.route('/E2M')
 def E2M():
@@ -48,24 +50,24 @@ def E2M():
 
     Final_Morse_Conversion = " ".join(Morse_Converted)
     # print("Morse : ",Final_Morse_Conversion,"\n")
-    return render_template('E2M.html', English=Final_Morse_Conversion)
+    return render_template('E2M.html', Morse=Final_Morse_Conversion)
 
 
 
-# @app.route('/M2E')
-# def M2E():
-#     morse_To_English, english_To_Morse = data_morse()
-#     Morse_String =request.args['English']
-#     print("Morse : ",Morse_String,"\n")
+@app.route('/M2E')
+def M2E():
+    morse_To_English, english_To_Morse = data_morse()
+    Morse_String =request.args['Morse']
+    print("Morse : ",Morse_String,"\n")
 
-#     Morse_List = Morse_String.split()
-#     English_Converted = []
-#     for i in Morse_List:
-#         English_Converted.append(morse_To_English[i])
+    Morse_List = Morse_String.split()
+    English_Converted = []
+    for i in Morse_List:
+        English_Converted.append(morse_To_English[i])
 
-#     Final_English_Conversion = "".join(English_Converted)
-#     # print("English : ",Final_English_Conversion,"\n")
-#     return render_template('M2E.html', Morse=Final_English_Conversion)
+    Final_English_Conversion = "".join(English_Converted)
+    # print("English : ",Final_English_Conversion,"\n")
+    return render_template('M2E.html', English=Final_English_Conversion)
 
 
 
